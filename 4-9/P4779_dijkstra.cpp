@@ -15,16 +15,14 @@ vector<edge> adj[100005];
 priority_queue<node> q;
 int dist[100005];
 bool vis[100005];
-int n, m, s;
+int n, m, s; // 分别对应点数、边数、开源点
 void djstl() {
     for (int i = 1; i <= n; i++)
     {
         vis[i] = false;
         dist[i] = inf;
     }
-    node node_u;
-    node_u.pos = s;
-    node_u.dis = 0;
+    node node_u {s, 0};
     q.push(node_u);
     dist[s] = 0;
     while (!q.empty())
@@ -43,10 +41,7 @@ void djstl() {
             if (dist[node_u.pos] + w < dist[v])
             {
                 dist[v] = dist[node_u.pos] + w;
-                node tmp;
-                tmp.dis = dist[v];
-                tmp.pos = v;
-                q.push(tmp);
+                q.push({v, dist[v]});
             }
         }
     }
