@@ -16,7 +16,6 @@ void spfa() {
         dist[i] = INT_MAX;
     }
     q.push(p);
-    
     vis[p] = true;
     dist[p] = 0;
     while (!q.empty()) {
